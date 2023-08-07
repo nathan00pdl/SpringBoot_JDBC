@@ -65,6 +65,13 @@ public class Seller implements Serializable{
 		this.baseSalary = baseSalary;
 	}
 
+	public Department getDepartment() {
+		return department;
+	}
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
 	//Declarando métodods hashCode e eqauals
 	@Override
 	public int hashCode() {
