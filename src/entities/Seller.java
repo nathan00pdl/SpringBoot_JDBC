@@ -15,18 +15,19 @@ public class Seller implements Serializable{
 	private Double baseSalary;
 	
 	//Declarando associação com a classe 'Department'
-	Department department;
+	private Department department;
 	
 	//Declarando contrutores
 	public Seller() {}
 
-	public Seller(Integer id, String name, String email, Date birthDate, Double baseSalary) {
+	public Seller(Integer id, String name, String email, Date birthDate, Double baseSalary, Department department) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.birthDate = birthDate;
 		this.baseSalary = baseSalary;
+		this.department = department;
 	}
 
 	//Declarando métodos getters e setters
@@ -94,6 +95,7 @@ public class Seller implements Serializable{
 	@Override
 	public String toString() {
 		return "Seller [id: " + id + ", name: " + name + ", email: " + email 
-				+ ", birthDate: " + birthDate + ", baseSalary: " + baseSalary + "]";
+				+ ", birthDate: " + birthDate + ", baseSalary: " + baseSalary  
+				+ ", Department: " + department + "]";
 	}
 }
