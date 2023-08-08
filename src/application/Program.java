@@ -1,6 +1,5 @@
 package application;
 
-import java.sql.Statement;
 import java.util.Date;
 import java.util.List;
 
@@ -34,7 +33,8 @@ public class Program {
 		
 		System.out.println("====TEST 4: Seller findByDepartment====");
 		Department dep2 = new Department(2, null);
-		List<Seller> list = sellerDao.findByDepartement(dep2);
+		SellerDAO sellerDao2 = daoFactory.createSellerDAO();
+		List<Seller> list = sellerDao2.findByDepartement(dep2);
 		for(Seller obj : list) {
 			System.out.println(obj);
 		}
@@ -42,7 +42,8 @@ public class Program {
 		System.out.println();
 		
 		System.out.println("====TEST 5: Seller findAll====");
-		list = sellerDao.findAll();
+		SellerDAO sellerDao3 = daoFactory.createSellerDAO();
+		list = sellerDao3.findAll();
 		for(Seller obj : list) {
 			System.out.println(obj);
 		}
@@ -54,5 +55,13 @@ public class Program {
 		sellerDao.insert(seller3);
 		System.out.println("Seller3 inserted!");
 		System.out.println("Seller3 Id: " + seller3.getId());  //Obs: essa linha testa o comando 'Statement.RETURN_GENERATED_KEYS);'
+	
+		System.out.println();
+		
+		System.out.println("====TEST 7: Seller Update====");
+		Seller seller4 = sellerDao.findById(1);
+		seller4.setName("Martha Waine");
+		sellerDao.update(seller4);
+		System.out.println("Update completed!");
 	}
 }
