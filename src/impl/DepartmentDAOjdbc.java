@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.cj.xdevapi.Statement;
-
 import dao.DepartmentDAO;
 import db.DB;
 import db.dbException;
@@ -31,24 +29,12 @@ public class DepartmentDAOjdbc implements DepartmentDAO{
 		PreparedStatement st = null;
 		
 		try {
-			st = conn.prepareStatement("INSERT INTO department (Name) VALUES (?)", 
-				  	Statement.RETURN_GENERATED_KEYS);
-
-				st.setString(1, obj.getName());
-
-				int rowsAffected = st.executeUpdate();
-
-				if (rowsAffected > 0) {
-					ResultSet rs = st.getGeneratedKeys();
-					
-					if (rs.next()) {
-						int id = rs.getInt(1);
-						obj.setId(id);
-					}
-				}
-				else {
-					throw new dbException("Unexpected error! No rows affected!");
-				}
+			st = conn.prepareStatement("INSERT INTO department (Name) VALUES (?)"); 
+			
+			st.setString(1, obj.getName());
+			
+			st.executeUpdate();
+			
 			}
 			catch (SQLException e) {
 				throw new dbException(e.getMessage());

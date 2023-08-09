@@ -13,33 +13,33 @@ public class Program2 {
 
 		Scanner sc = new Scanner(System.in);
 
-		DepartmentDAO departmentDao = daoFactory.createDepartmentDAO();
 
 		System.out.println("==== TEST 1: findById ====");
-		Department dep = departmentDao.findById(1);
-		System.out.println(dep);  
+		DepartmentDAO departmentDao = daoFactory.createDepartmentDAO();
+		Department dep1 = departmentDao.findById(1);
+		System.out.println(dep1);  //Será retornado o department 'Computers'
 		
 		System.out.println();
 
 		System.out.println("==== TEST 2: findAll ====");
 		List<Department> list = departmentDao.findAll();
 		for (Department d : list) {
-			System.out.println(d);
+			System.out.println(d);  //Será retornado todos os de departments
 		}
 
 		System.out.println();
 		
 		System.out.println("==== TEST 3: INSERT ====");
-		Department newDepartment = new Department(null, "Music");
-		departmentDao.insert(newDepartment);
-		System.out.println("Inserted! New id: " + newDepartment.getId());
+		Department dep2 = new Department(null, "Music");
+		departmentDao.insert(dep2);
+		System.out.println("New department inserted!");
 		
 		System.out.println();
 
 		System.out.println("==== TEST 4: UPDATE ====");
-		Department dep2 = departmentDao.findById(1);
-		dep2.setName("Food");
-		departmentDao.update(dep2);
+		Department dep3 = departmentDao.findById(1);
+		dep3.setName("Food");  //O department 'Computers' passará ser chamado de 'Food'
+		departmentDao.update(dep3);
 		System.out.println("Update completed");
 
 		System.out.println();
