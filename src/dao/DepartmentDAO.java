@@ -7,7 +7,9 @@ import entities.Department;
 public interface DepartmentDAO {
 
 	void insert(Department obj);
+	
 	void update(Department obj);
+	
 	void deleteById(Integer id);
 	
 	//Obs: a operação 'findById' retornará um objeto do tipo 'Department'

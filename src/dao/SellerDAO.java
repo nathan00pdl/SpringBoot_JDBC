@@ -8,7 +8,9 @@ import entities.Seller;
 public interface SellerDAO {
 
 	void insert(Seller obj);
+	
 	void update(Seller obj);
+	
 	void deleteById(Integer id);
 	
 	//Obs: a operação 'findById' retornará um objeto do tipo 'Seller'
